@@ -32,7 +32,7 @@ const login = async(req, res) => {
         })
     } catch (error) {
         return res.status('401').json({
-            error: 'Could not log in'
+            error: 'Could not log-in'
         })
     }
 }
