@@ -1,52 +1,50 @@
+////////////////// Server-side code //////////////////
+
+// Requiring third party packages
+const path = require('path');
 const express = require('express');
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 const colors = require('colors');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const cors = require('cors');
-const compress = require('compression');
-const helmet = require('helmet');
+const morgan = require('morgan');
 
-const template = require('./template');
-const authRoute = require('./routes/authRoute');
-const expenseRoute = require('./routes/expenseRoute');
-const userRoute = require('./routes/userRoute');
-const { DB_URL } = require('./config.js');
+// Requiring inbuilt packages
+dotenv.config({ path: '../config/config.env' });
+const userRoute = require('./routes/users');
+const transactionRoute = require('./routes/transactions');
 
+// Initializing the app
 const app = express();
-const PORT = process.env.PORT || 8080;
-
 app.use(express.json());
-app.use(cookieParser);
-app.use(cors());
-app.use(compress());
-app.use(helmet());
 
-app.use('/', authRoute);
-app.use('/', expenseRoute);
-app.use('/', userRoute);
+// PORT
+const PORT = process.env.PORT || 5050;
 
-app.use((err, req, res, next) => {
-    if (err.name === 'UnauthorizedError') {
-        res.status(401).json({ "error": err.name + ": " + err.message });
-    } else if (err) {
-        res.status(400).json({ "error": err.name + ": " + err.message });
-        console.log(err);
+if (process.env.NODE_ENV === 'development') {
+    app.use(morgan('dev'));
+}
+
+// Specifying routes
+app.use('/api/transactions', transactionRoute);
+app.use('/api/users', userRoute);
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('client/build'));
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    })
+}
+
+// Establishing Database Connection
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
+    if (err) {
+        console.log('Error Occured'.red.bold);
+    } else {
+        console.log('Database Connected'.cyan.bold);
     }
 })
 
-app.get('/', (req, res) => {
-    res.send('Hello, There');
+// Listening to the port
+app.listen(PORT, () => {
+    console.log(`Server running in port ${PORT}`.yellow.bold);
 })
-
-mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => {
-        console.log('Database connected'.yellow.bold);
-        return app.listen({ port: PORT });
-    })
-    .then((res) => {
-        console.log(`Server running at port ${PORT}`.cyan.bold);
-    })
-    .catch((err) => {
-        console.log('Error Occured'.red.bold + err);
-    })
