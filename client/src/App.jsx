@@ -1,12 +1,14 @@
-import React from 'react';
-import { hot } from 'react-hot-loader';
+//////////////// Main App Component ///////////
 
+// Requiring third party packages
+import React from 'react';
+
+// App Component
 const App = () => {
     return (
-        <div>
-            <h1>Hello, There</h1>
-        </div>
+        <h1>Hello, There</h1>
     );
-}
+};
 
-export default hot(module)(App);
+// Exporting the component
+export default App;
