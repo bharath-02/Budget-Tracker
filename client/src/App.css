@@ -1,0 +1,430 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  /* font-family: Avenir !important; */
+}
+
+body {
+  background-color: white !important;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  font-family: Roboto, sans-serif;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.container {
+  margin: 20px auto;
+  width: 350px;
+}
+
+.MuiTypography-h6 {
+  opacity: 0.8;
+}
+
+/* ----- NAVIGATION ----- */
+
+.block-greeting {
+  height: 280px;
+  margin: 0 16px;
+  padding-top: 30px;
+}
+
+.username {
+  text-transform: capitalize;
+  min-height: 100px;
+}
+
+#menu {
+  text-transform: uppercase;
+}
+
+#menu > .Mui-selected {
+  background: transparent !important;
+}
+
+/* ----- DASHBOARD ----- */
+
+.container-top {
+  background: #65bcbf;
+  /* width: 100vw; */
+  padding: 56px 0;
+  text-align: center;
+}
+
+.main-title {
+  color: white;
+  opacity: 0.5;
+  font-size: 14px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.main-amount {
+  color: white;
+  font-size: 40px;
+}
+
+/* ----- INCOME - EXPENSE ----- */
+
+.sub-title {
+  color: #fff;
+  opacity: 0.5;
+  font-size: 14px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.sub-amount {
+  font-size: 24px;
+  margin: 5px 0;
+  color: white;
+}
+
+.inc-exp-container {
+  width: 350px;
+  margin: 20px auto;
+  /* padding: 20px 0; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.inc-exp-container > div {
+  flex: 1;
+  text-align: center;
+}
+
+.inc-exp-container > div:first-of-type {
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* ----- TRANSACTION ----- */
+
+.block {
+  display: inline-block;
+}
+
+.block-amount {
+  width: 300px;
+  text-align: right;
+}
+
+.expense-amount {
+  width: 140px;
+}
+
+/* ----- ADD TRANSACTION ----- */
+
+.new-form {
+  width: 350px;
+  margin: auto;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.input-amount {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.plus-bg {
+  background: #65bcbf;
+}
+
+.minus-bg {
+  background: #f8777d;
+}
+
+.zero-bg {
+  background: #232c2d9f;
+}
+
+.btn {
+  /* opacity: 1; */
+  cursor: pointer;
+  /* background-color: #607d8b; */
+  color: #fff;
+  display: block;
+  font-size: 18px;
+  padding: 15px;
+  width: 100%;
+  letter-spacing: 1px;
+  border: 0;
+  /* border-radius: 4px; */
+}
+
+.btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.btn:focus,
+.delete-btn:focus {
+  outline: 0;
+}
+
+.no-outline:active,
+.no-outline.active,
+.no-outline:active:focus,
+.no-outline:focus {
+  outline: 0 !important;
+  outline-offset: 0 !important;
+  background-image: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+/* ----- TRANSACTION LIST ----- */
+
+.list {
+  list-style-type: none;
+  padding: 0;
+  color: #232c2d;
+  opacity: 0.8;
+  overflow: hidden;
+}
+
+.list-bottom {
+  margin-bottom: 90px;
+}
+
+.list li {
+  font-size: 16px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 20px 0;
+  /* margin: 10px 0; */
+  text-transform: capitalize;
+}
+
+.list-date {
+  font-size: 14px;
+  margin-top: 3px;
+  opacity: 0.5;
+  letter-spacing: 1px;
+}
+
+.list-amount {
+  font-size: 24px;
+}
+
+.plus {
+  color: #65bcbf;
+}
+
+.minus {
+  color: #f8777d;
+}
+
+.zero {
+  color: #232c2d9f;
+}
+
+.list-status {
+  height: 35vh;
+  line-height: 1.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #232c2d;
+  opacity: 0.8;
+}
+
+/* ----- TRANSACTION ----- */
+
+.menu-icon {
+  color: #fff;
+  position: absolute;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ----- TRANSACTIONS ----- */
+
+.MuiTabs-indicator {
+  color: white;
+}
+
+.time-bar {
+  color: white;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* ----- TRANSACTIONS > REPORT OVERVIEW ----- */
+
+.box {
+  position: relative;
+}
+
+.box-balance {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.box-incomeExpense {
+  display: flex;
+  height: 100%;
+  margin: auto;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.block-chart {
+  position: relative;
+  height: 100%;
+  width: 50%;
+}
+
+.block-ratio {
+  display: flex;
+  align-items: center;
+}
+
+.block-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  text-align: left;
+  min-width: 160px;
+}
+
+.text-white-l {
+  font-size: 24px;
+  color: white;
+  text-transform: uppercase;
+}
+
+.text-white-m {
+  font-size: 18px;
+  color: white;
+  opacity: 0.5;
+  margin-left: 5px;
+}
+
+.text-white-s {
+  font-size: 12px;
+  color: white;
+  opacity: 0.5;
+  text-transform: uppercase;
+}
+
+.vertical-align {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+}
+
+/* ----- BAR CHART ----- */
+
+.center-align {
+  margin: auto;
+  margin-top: 25px;
+  overflow: visible;
+}
+
+/* ----- RWD ----- */
+
+@media only screen and (max-width: 600px) {
+  .container-top {
+    padding: 28px 0;
+  }
+}
+
+@media (min-width: 600px) {
+  .MuiTab-root {
+    min-width: 0 !important;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .container,
+  .inc-exp-container {
+    width: 90vw;
+  }
+
+  .new-form {
+    width: 80vw;
+  }
+
+  .main-amount {
+    font-size: 40px;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .main-title,
+  .sub-title {
+    font-size: 12px;
+  }
+
+  .sub-amount,
+  .list-amount {
+    font-size: 20px;
+  }
+  .block-text {
+    min-width: 120px;
+  }
+  .text-white-l {
+    font-size: 18px;
+  }
+
+  .expense-amount {
+    width: 120px;
+  }
+}
+
+@media only screen and (max-height: 650px) {
+  .login-form {
+    margin-top: 20px;
+  }
+
+  .box {
+    height: 32vh;
+  }
+
+  .list-status {
+    height: 30vh;
+  }
+}
+
+@media only screen and (min-height: 570px) {
+  .box {
+    height: 28vh;
+  }
+}
+
+@media only screen and (min-height: 800px) {
+  .box {
+    height: 24vh;
+  }
+}
+
+@media only screen and (min-height: 900px) {
+  .box {
+    height: 20vh;
+  }
+}
